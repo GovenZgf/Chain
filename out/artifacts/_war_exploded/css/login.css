@@ -1,0 +1,14 @@
+.login_box{
+    text-align: center;
+    margin:auto;
+    padding-top: 100px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    height: 40%;
+    width: 20%;
+    background-color: #D1EEEE;
+
+}
