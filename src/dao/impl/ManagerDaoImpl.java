@@ -10,7 +10,7 @@ public class ManagerDaoImpl implements ManagerDao {
     private QueryRunner queryRunner = new QueryRunner(C3P0Utils.getDataSource());
     @Override
     public Manager findManagerByIdAndPassword(String id,String pass) {
-        String sql = "select * from manage_info where managerId = ? and managerPass = ?" ;
+        String sql = "select * from manager_info where managerId = ? and managerPassword = ?" ;
         Object[] params = new Object[]{id,pass};
         Manager manager = null;
         try{
