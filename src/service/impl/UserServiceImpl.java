@@ -1,8 +1,9 @@
-package service;
+package service.impl;
 
 import dao.UserDao;
 import dao.impl.UserDaoImpl;
 import pojo.User;
+import service.UserService;
 
 public class UserServiceImpl implements UserService {
     private UserDao userDao = new UserDaoImpl();

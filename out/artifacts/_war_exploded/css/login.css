@@ -12,3 +12,8 @@
     background-color: #D1EEEE;
 
 }
+.login_header{
+    margin-left: 4.5rem;
+    letter-spacing: 16px;
+    font: 12px/1.5 Tahoma,Helvetica,Arial,'宋体',sans-serif
+}
