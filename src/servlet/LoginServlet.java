@@ -1,6 +1,7 @@
 package servlet;
 
 import com.mchange.v2.c3p0.*;
+import dao.impl.UserDaoImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,12 +16,10 @@ import java.sql.ResultSet;
 @WebServlet(name = "LoginServlet",urlPatterns = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setCharacterEncoding("utf-8");
-        response.setContentType("utf-8");
-        request.setCharacterEncoding("utf-8");
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         String userId = request.getParameter("userId");
         String userPassword = request.getParameter("userPassword");
+        UserDaoImpl userdaoimpl = new UserDaoImpl();
         PrintWriter writer = response.getWriter();
         try {
             Connection conn = dataSource.getConnection();

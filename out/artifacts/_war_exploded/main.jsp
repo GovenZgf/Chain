@@ -1,6 +1,4 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="pojo.User" %>
-<%@ page import="java.util.List" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: sj150
   Date: 2019/11/28
@@ -10,12 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>订票主页</title>
 </head>
 <body>
-<%
-    if(session.getAttribute("username") instanceof ArrayList<?>){
-        List<User> stuList = (ArrayList<User>)session.getAttribute("username");}
-%>
+<table>
+    <caption>票？</caption>
+
+</table>
 </body>
 </html>
