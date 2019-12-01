@@ -14,6 +14,7 @@ public class BaseServlet extends HttpServlet {
         if(method == null||method.equals("")||method.trim().equals("")){
             method = "execute" ;
         }
+        //反射
         //为页面请求匹配具体的处理方法
         Class cla = this.getClass();
         try{

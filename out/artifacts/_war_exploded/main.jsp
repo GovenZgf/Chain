@@ -13,7 +13,6 @@
 <body>
 <table>
     <caption>票？</caption>
-
 </table>
 </body>
 </html>

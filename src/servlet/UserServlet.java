@@ -2,7 +2,7 @@ package servlet;
 
 import pojo.User;
 import service.UserService;
-import service.UserServiceImpl;
+import service.impl.UserServiceImpl;
 import web.BaseServlet;
 
 import javax.servlet.ServletException;

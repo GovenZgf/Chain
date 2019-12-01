@@ -14,7 +14,6 @@
     <title>火车站网上售票系统</title>
   </head>
   <body>
-<p class="h1 text-center">火车站网上售票系统</p>
 <div class="login_box">
   <div class="center-block">
     <form action="UserServlet?method=userLogin" method="post" class="form-horizontal">
