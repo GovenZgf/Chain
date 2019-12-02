@@ -20,6 +20,37 @@ public class User {
 
     public User(String id, String password){this.userId = id;this.userPassword=password;}
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserIDCard() {
+        return userIDCard;
+    }
+
+    public void setUserIDCard(String userIDCard) {
+        this.userIDCard = userIDCard;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
 
     public String getUserId() {
         return userId;
