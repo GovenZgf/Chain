@@ -23,4 +23,9 @@ public class UserDaoImpl implements UserDao {
         }
         return user;
     }
+
+    @Override
+    public void updateUser(User user) {
+        String sql = "update user_info set userId=?,userPassword=?,userPhoneNum=?,userIDcard=?,userName=?";
+    }
 }
