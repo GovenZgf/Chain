@@ -9,12 +9,13 @@ import service.impl.OrderServiceImpl;
 import web.BaseServlet;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-
+@WebServlet(name = "OrderServlet",urlPatterns = "/OrderServlet")
 public class OrderServlet extends BaseServlet {
     private OrderServiceImpl orderService = new OrderServiceImpl();
     public String toBooking(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{

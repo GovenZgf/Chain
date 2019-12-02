@@ -2,18 +2,19 @@
   <artifact type="exploded-war" name="火车站网上售票系统:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/_war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="火车站网上售票系统/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="火车站网上售票系统" />
+          <element id="module-output" name="Chain" />
         </element>
         <element id="directory" name="lib">
           <element id="file-copy" path="E:/c3p0/mchange-commons-java-0.2.15.jar" />
           <element id="file-copy" path="$APPLICATION_CONFIG_DIR$/jdbc-drivers/MySQL Connector/J 8/8.0.15/mysql-connector-java-8.0.15.jar" />
           <element id="file-copy" path="E:/c3p0/c3p0-0.9.5.4.jar" />
           <element id="file-copy" path="D:/commons-dbutils-1.7/commons-dbutils-1.7.jar" />
+          <element id="file-copy" path="D:/chrome/下载内容/mysql-connector-java-8.0.17.jar" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="Chain/web/Web" />
     </root>
   </artifact>
 </component>

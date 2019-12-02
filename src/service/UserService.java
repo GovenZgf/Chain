@@ -4,4 +4,5 @@ import pojo.User;
 
 public interface UserService {
     User findUserByUsernameAndPassword(String id, String password);
+    void saveUser(User user);
 }

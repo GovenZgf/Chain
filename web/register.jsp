@@ -23,7 +23,7 @@
 <body>
 <div class=m1>
     <div align="center">
-        <form action="index.jsp" method="post">
+        <form action="UserServlet?method=userRegister" method="post">
             <div>
                 <label>姓 名:</label> <input type="text" name="userName" />
             </div>
@@ -31,10 +31,10 @@
                 <label>账 号:</label> <input type="text" name="userId" />
             </div>
             <div>
-                <label>密 码：</label> <input type="password" name="userPassword" />
+                <label>密 码:</label> <input type="password" name="userPassword" />
             </div>
             <div>
-                <label>电 话：</label> <input type="text" name="userPhone" />
+                <label>电 话:</label> <input type="text" name="userPhoneNum" />
             </div>
             <div>
                 <button type="submit">完成</button>

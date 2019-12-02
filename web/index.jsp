@@ -27,8 +27,8 @@
       </div>
       <div class="form-group">
           <button type="submit" class="btn btn-default">登录</button>
-          <button type="submit" class="btn btn-default" onclick="">注册</button>
-      </div>
+          <button type="button" class="btn btn-default" onclick="location.href='register.jsp'">注册</button>
+  </div>
     </form>
   </div>
 </div>

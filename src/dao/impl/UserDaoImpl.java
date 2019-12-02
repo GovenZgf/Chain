@@ -28,4 +28,13 @@ public class UserDaoImpl implements UserDao {
     public void updateUser(User user) {
         String sql = "update user_info set userId=?,userPassword=?,userPhoneNum=?,userIDcard=?,userName=?";
     }
+    public void saveUser(User user){
+        String sql = "insert into user_info(userId,userPassword,userName,userPhoneNum) values (?,?,?,?)";
+        Object[] params = new Object[]{user.getUserId(),user.getUserPassword(),user.getUserName(),user.getPhoneNumber()};
+        try{
+                queryRunner.update(sql,params);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
