@@ -9,18 +9,22 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="css/login.css" type="text/css">
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="../css/login.css" type="text/css">
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+
 </head>
 <body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-3" style="margin-top: 165px">
 <form action="OrderServlet?method=booking">
     <div class="form-group">
         <label for="passengerName">乘客姓名</label>
         <input type="text" id="passengerName" name="passengerName" class="form-control">
         <label for="passengerIDcard">身份证号码</label>
         <input type="text" id="passengerIDcard" name="passengerIDcard" class="form-control">
-        <label for="startStation" >起点</label>
+        <label for="startStation" x>起点</label>
         <select class="form-control" id="startStation" name="startStation">
             <option>1</option>
             <option>2</option>
@@ -46,8 +50,11 @@
         </select>
     </div>
     <label for="departureTime">发车时间</label>
-    <input data-format="dd/MM/yyyy hh:mm:ss" type="text" id="departureTime" name="departureTime">
+    <input type="datetime-local" data-format="dd/MM/yyyy hh:mm:ss" type="text" id="departureTime" name="departureTime">
     <button type="submit" class="btn btn-default">预订</button>
 </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
