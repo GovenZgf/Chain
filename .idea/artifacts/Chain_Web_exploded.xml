@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Chain:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Chain_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Chain/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Chain" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="D:/Tencent/QQfile/c3p0/c3p0-0.9.5.4.jar" />
+          <element id="file-copy" path="$USER_HOME$/Documents/Tencent Files/721781026/FileRecv/commons-dbutils-1.7.jar" />
+          <element id="file-copy" path="D:/Tencent/QQfile/c3p0/mchange-commons-java-0.2.15.jar" />
+          <element id="file-copy" path="$USER_HOME$/Documents/Tencent Files/721781026/FileRecv/mysql-connector-java-8.0.17.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
