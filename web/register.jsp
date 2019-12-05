@@ -19,31 +19,6 @@
         }
     </style>
 
-    <script type="text/javascript">
-        function formCheck() {
-            var url = "UserServlet";
-            var userId = document.getElementById("userId").value();
-            var params = "method = formCheck"+"userId=" + "userId.value";
-            sendRequest(url, params, 'POST', showResult);
-        }
-        function showResult() {
-            var result = xmlHttp_request.responseText;
-            if (xmlHttp_request.readyState == 4&&xmlHttp_request.status == 200) {
-                var info = xmlHttp_request.responseText;
-                result.innerHTML = info;
-            }
-        }
-        function pwdCheck() {
-            var pwd1 = document.getElementById("pwd1").value;
-            var pwd2 = document.getElementById("pwd2").value;
-            var pwd2check = document.getElementById("pwd2check");
-            if (pwd2 != pwd1) {
-                pwd2check.innerHTML = "<font color='red'>两次密码不一致<font>";
-            } else {
-                pwd2check.innerHTML = "两次密码一致";
-            }
-        }
-    </script>
 </head>
 <body>
 <div class=m1>
@@ -53,15 +28,10 @@
                 <label>姓 名:</label> <input type="text" name="userName" />
             </div>
             <div>
-                <label>账 号:</label> <input type="text" id = "userId" name="userId" onblur="formCheck()"/>
-                <span id="result"></span>
+                <label>账 号:</label> <input type="text" name="userId" />
             </div>
             <div>
-                <label>请输入密码:</label> <input type="password" name="userPassword" id="pwd1" onblur="pwdCheck()" />
-            </div>
-            <div>
-                <label>再次输入密码:</label> <input type="password" onblur="pwdCheck()" id="pwd2"/>
-                <span id="pwd2check"></span>
+                <label>密 码:</label> <input type="password" name="userPassword" />
             </div>
             <div>
                 <label>电 话:</label> <input type="text" name="userPhoneNum" />
