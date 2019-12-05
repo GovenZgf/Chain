@@ -10,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+
 @WebServlet(name = "UserServlet",urlPatterns = "/UserServlet")
 public class UserServlet extends BaseServlet {
     private UserService userService = new UserServiceImpl();
@@ -26,7 +28,20 @@ public class UserServlet extends BaseServlet {
         }
         return null;
     }
-    public String userRegister(HttpServletRequest request,HttpServletResponse response) throws Exception {
+    public String formCheck(HttpServletRequest request,HttpServletResponse response)throws ServletException,IOException{
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
+        request.setCharacterEncoding("UTF-8");
+        String userId=request.getParameter("userId");
+        if("130555".equals(userId)) {
+            out.print("<font color='red'>用户名已存在<font>");
+        }
+        else {
+            out.print("该用户名可以注册");
+        }
+        return null;
+    }
+    public String userRegister(HttpServletRequest request,HttpServletResponse response) throws ServletException,Exception {
         String sid = request.getParameter("userId");
         String sPassword = request.getParameter("userPassword");
         String sName = request.getParameter("userName");
