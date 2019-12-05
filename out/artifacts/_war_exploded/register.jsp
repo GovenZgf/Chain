@@ -18,30 +18,35 @@
             background-color: #CFE1E7;
         }
     </style>
-
+    <script type="text/javascript" src="js/Ajax.js"></script>
     <script type="text/javascript">
-        function formCheck() {
-            var url = "UserServlet";
-            var userId = document.getElementById("userId").value();
-            var params = "method = formCheck"+"userId=" + "userId.value";
-            sendRequest(url, params, 'POST', showResult);
+    function formCheck() {
+    var url = "UserServlet?method = formCheck";
+    var userId = document.getElementById("userId")
+    var params = "userId=" + userId.value;
+    sendRequest(url, params, "POST", showResult);
+    }
+
+    function showResult() {
+        var flag = xmlHttp_request.responseText;
+      var result = document.getElementById("result");
+    if (xmlHttp_request.readyState == 4&&xmlHttp_request.status == 200) {
+        if(flag ==true) {
+            var info = xmlHttp_request.responseText;
+            result.innerHTML = info;
         }
-        function showResult() {
-            var result = xmlHttp_request.responseText;
-            if (xmlHttp_request.readyState == 4&&xmlHttp_request.status == 200) {
-                var info = xmlHttp_request.responseText;
-                result.innerHTML = info;
-            }
+    }
+    }
+    function pwdCheck(){
+    var pwd1=document.getElementById("pwd1").value;
+    var pwd2=document.getElementById("pwd2").value;
+    var pwd2check=document.getElementById("pwd2check");
+    if(pwd2!=pwd1){
+    pwd2check.innerHTML="<font color='red'>两次密码不一致<font>";
         }
-        function pwdCheck() {
-            var pwd1 = document.getElementById("pwd1").value;
-            var pwd2 = document.getElementById("pwd2").value;
-            var pwd2check = document.getElementById("pwd2check");
-            if (pwd2 != pwd1) {
-                pwd2check.innerHTML = "<font color='red'>两次密码不一致<font>";
-            } else {
-                pwd2check.innerHTML = "两次密码一致";
-            }
+        else{
+        pwd2check.innerHTML="两次密码一致";
+        }
         }
     </script>
 </head>
@@ -53,14 +58,14 @@
                 <label>姓 名:</label> <input type="text" name="userName" />
             </div>
             <div>
-                <label>账 号:</label> <input type="text" id = "userId" name="userId" onblur="formCheck()"/>
+                <label>账 号:</label> <input type="text" name="userId" id="userId" onblur="formCheck()"/>
                 <span id="result"></span>
             </div>
             <div>
-                <label>请输入密码:</label> <input type="password" name="userPassword" id="pwd1" onblur="pwdCheck()" />
+                <label>密 码:</label> <input type="password" name="userPassword" id="pwd1" />
             </div>
             <div>
-                <label>再次输入密码:</label> <input type="password" onblur="pwdCheck()" id="pwd2"/>
+                <label>再次输入密码:</label> <input type="password" id="pwd2" onblur="pwdCheck()" />
                 <span id="pwd2check"></span>
             </div>
             <div>
