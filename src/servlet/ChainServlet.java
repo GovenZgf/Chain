@@ -10,9 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+
 @WebServlet(name = "ChainServlet",urlPatterns = "/ChainServlet")
 public class ChainServlet extends BaseServlet {
     private ChainService chainService = new ChainServiceImpl();
@@ -21,14 +21,17 @@ public class ChainServlet extends BaseServlet {
         String startStation = request.getParameter("startStation");
         String endStation = request.getParameter("endStation");
         Double price = Double.parseDouble(request.getParameter("chainPrice"));
+        String dTime = request.getParameter("departureTime");
+        dTime = dTime.replace('T',' ');
         try{
-            Date departureTime = (Date) new SimpleDateFormat("yy-MM-dd hh:mm:ss").parse(request.getParameter("departureTime"));
-            Date time = (Date)new SimpleDateFormat("HH:mm:ss").parse(request.getParameter("departureTime"));
+            Timestamp departureTime =Timestamp.valueOf(dTime);
+            Time time = Time.valueOf(request.getParameter("time"));
             Chain chain = new Chain(chainId,startStation,endStation,departureTime,time,price);
             chainService.addChain(chain);
         }catch (Exception e){
             e.printStackTrace();
         }
+        request.getRequestDispatcher("manage/ticket_manage.jsp").forward(request,response);
         return null;
     }
 }

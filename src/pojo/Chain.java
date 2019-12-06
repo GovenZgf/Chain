@@ -1,18 +1,17 @@
 package pojo;
 
-import pojo.chain_info.SeatType;
-
-import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 public class Chain {
     private String chainId;
     private String startStation;
     private String endStation;
-    private Date departureTime;
-    private Date time;
+    private Timestamp departureTime;
+    private Time time;
     private Double price;
 
-    public Chain( String chainId, String startStation, String endStation, Date departureTime,Date time, Double price) {
+    public Chain(String chainId, String startStation, String endStation, Timestamp departureTime, Time time, Double price) {
         this.chainId = chainId;
         this.startStation = startStation;
         this.endStation = endStation;
@@ -21,11 +20,11 @@ public class Chain {
         this.time = time;
     }
 
-    public Date getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
@@ -53,11 +52,11 @@ public class Chain {
         this.endStation = endStation;
     }
 
-    public Date getDepartureTime() {
+    public Timestamp getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(Date departureTime) {
+    public void setDepartureTime(Timestamp departureTime) {
         this.departureTime = departureTime;
     }
 
