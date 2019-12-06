@@ -23,7 +23,7 @@ public class ChainServlet extends BaseServlet {
         Double price = Double.parseDouble(request.getParameter("chainPrice"));
         try{
             Date departureTime = (Date) new SimpleDateFormat("yy-MM-dd hh:mm:ss").parse(request.getParameter("departureTime"));
-            Date time = (Date)new SimpleDateFormat("HH:mm:ss").parse(request.getParameter("departureTime"));
+            Date time = (Date)new SimpleDateFormat("HH:mm:ss").parse(request.getParameter("time"));
             Chain chain = new Chain(chainId,startStation,endStation,departureTime,time,price);
             chainService.addChain(chain);
         }catch (Exception e){

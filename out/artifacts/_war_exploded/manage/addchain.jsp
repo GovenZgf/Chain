@@ -21,7 +21,7 @@
     </div>
     <div style="padding: 17.5% ;border: #848185 1px solid">
         <div class="row" style="background: #aca9ad">
-            <form class="form-horizontal" style="margin: 10px" action="ChainServlet?addChain" method="post">
+            <form class="form-horizontal" style="margin: 10px" action="ChainServlet?method=addChain" method="post">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="inputtext1">车次</label>
                     <div class="col-sm-5">
