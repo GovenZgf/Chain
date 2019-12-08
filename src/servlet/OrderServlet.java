@@ -26,7 +26,9 @@ public class OrderServlet extends BaseServlet {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String orderId = Integer.toString(request.getSession().getAttribute("user").hashCode()+request.getSession().hashCode());
         User user = (User)request.getSession().getAttribute("user");
-        Passenger passenger = new Passenger(request.getParameter("passengerName"),request.getParameter("passengerIDcard"));
+        Passenger passenger = new Passenger();
+        passenger.setPassengerIDcard(request.getParameter("passengerIDcard"));
+        passenger.setPassengerName(request.getParameter("passengerIDcard"));
         Date orderDate = new Date();
         OrderStatus orderStatus = null;
         MealsOrder mealsOrder = null;

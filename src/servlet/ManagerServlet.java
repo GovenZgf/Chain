@@ -27,4 +27,15 @@ public class ManagerServlet extends BaseServlet {
         }
         return null;
     }
+    public String errorMethod(HttpServletRequest request,HttpServletResponse response)throws ServletException,IOException{
+        request.getSession().setAttribute("error","addError");
+        response.sendRedirect("manage/manager_main.jsp");
+        return null;
+    }
+    public String errorMethodDelete(HttpServletRequest request,HttpServletResponse response)throws ServletException,IOException{
+        request.getSession().setAttribute("error","deleteError");
+        response.sendRedirect("manage/manager_main.jsp");
+        return null;
+    }
+
 }

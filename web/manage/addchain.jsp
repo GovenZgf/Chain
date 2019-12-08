@@ -49,21 +49,30 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="inputtime2">历经时间</label>
                     <div class="col-sm-5">
-                        <input type="time" class="form-control" id="inputtime2"name="time" placeholder="请输入历经时间">
+                        <input type="time" class="form-control" id="inputtime2" name="time" placeholder="请输入历经时间">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="inputtext4">价格</label>
+                    <label class="control-label col-sm-2" >价格</label>
                     <div class="col-sm-5">
-                        <input type="number" class="form-control" id="inputtext4" name="chainPrice"placeholder="请输入价格">
+                        <input type="number" class="form-control"   name="onePrice"placeholder="一等座价格">
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="number" class="form-control"    name="twoPrice"placeholder="二等座价格">
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="number" class="form-control"   name="hardPrice"placeholder="硬卧价格">
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="number" class="form-control"    name="softPrice"placeholder="软卧价格">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="select1">车厢信息</label>
                     <div class="col-sm-5">
-                        <select class="form-control" id="select1">
-                            <option value="8车厢">8车厢</option>
-                            <option value="16车厢">16车厢</option>
+                        <select class="form-control" id="select1" name="carriageNum">
+                            <option value="8">8车厢</option>
+                            <option value="16">16车厢</option>
                         </select>
                     </div>
                 </div>

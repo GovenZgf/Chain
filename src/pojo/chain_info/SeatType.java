@@ -10,6 +10,14 @@ public enum SeatType {
         this.numOfType = numOfType;
     }
 
+    public int getNumOfType() {
+        return numOfType;
+    }
+
+    public void setNumOfType(int numOfType) {
+        this.numOfType = numOfType;
+    }
+
     public String getType() {
         return type;
     }

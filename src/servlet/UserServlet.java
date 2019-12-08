@@ -1,7 +1,10 @@
 package servlet;
 
+import pojo.Passenger;
 import pojo.User;
+import service.PassengerService;
 import service.UserService;
+import service.impl.PassengerServiceImpl;
 import service.impl.UserServiceImpl;
 import web.BaseServlet;
 
@@ -11,10 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 @WebServlet(name = "UserServlet",urlPatterns = "/UserServlet")
 public class UserServlet extends BaseServlet {
     private UserService userService = new UserServiceImpl();
+    private PassengerService passengerService = new PassengerServiceImpl();
     public String userLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String sid = request.getParameter("userId");
         String sPassword = request.getParameter("userPassword");
@@ -60,6 +65,38 @@ public class UserServlet extends BaseServlet {
             response.sendRedirect("register.jsp");
         }
         response.sendRedirect("index.jsp");
+        return null;
+    }
+    public String showAllUsers(HttpServletRequest request,HttpServletResponse response)throws ServletException,IOException{
+        ArrayList<User> userList = userService.selectAllUsers();
+        ArrayList<Passenger> passengers = new ArrayList<>();
+        for(User user:userList) {
+            if(passengerService.selectOnePassenger(user.getUserIDCard())!=null)
+            passengers.add(passengerService.selectOnePassenger(user.getUserIDCard()));
+        }
+        request.setAttribute("userList",userList);
+        request.setAttribute("passengerList",passengers);
+        request.getRequestDispatcher("manage/user_manage.jsp").forward(request,response);
+        return null;
+    }
+    public String deleteOneUser(HttpServletRequest request,HttpServletResponse response)throws ServletException,IOException{
+        String uid = request.getParameter("userId");
+        userService.deleteUser(uid);
+        request.getRequestDispatcher("manage/user_manage.jsp").forward(request,response);
+        return null;
+    }
+    public String modifyUser(HttpServletRequest request,HttpServletResponse response)throws ServletException,IOException{
+        String passengerIDcard = request.getParameter("passengerIDcard");
+        Passenger passenger = passengerService.selectOnePassenger(passengerIDcard);
+        if(passenger.getPassengerType().equals("学生")){
+        passengerService.updatePassengerType(passengerIDcard,"普通人员");
+        response.sendRedirect("manage/user_manage.jsp");}
+        else if(passenger.getPassengerType().equals("普通人员")){
+            passengerService.updatePassengerType(passengerIDcard,"学生");
+            response.sendRedirect("manage/user_manage.jsp");}
+        else{
+            response.sendRedirect("manage/user_manage.jsp");;
+        }
         return null;
     }
 }

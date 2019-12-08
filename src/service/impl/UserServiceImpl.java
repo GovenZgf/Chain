@@ -5,6 +5,8 @@ import dao.impl.UserDaoImpl;
 import pojo.User;
 import service.UserService;
 
+import java.util.ArrayList;
+
 public class UserServiceImpl implements UserService {
     private UserDao userDao = new UserDaoImpl();
     @Override
@@ -16,5 +18,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(User user) {
         userDao.saveUser(user);
+    }
+
+    @Override
+    public ArrayList<User> selectAllUsers() {
+        return userDao.selectALLUsers();
+    }
+
+    @Override
+    public void deleteUser(String uid) {
+        userDao.deleteUser(uid);
     }
 }

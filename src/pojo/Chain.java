@@ -11,13 +11,15 @@ public class Chain {
     private Time time;
     private Double price;
 
-    public Chain(String chainId, String startStation, String endStation, Timestamp departureTime, Time time, Double price) {
+    public Chain(String chainId, String startStation, String endStation, Timestamp departureTime, Time time) {
         this.chainId = chainId;
         this.startStation = startStation;
         this.endStation = endStation;
         this.departureTime = departureTime;
-        this.price = price;
         this.time = time;
+    }
+
+    public Chain() {
     }
 
     public Time getTime() {
@@ -60,11 +62,4 @@ public class Chain {
         this.departureTime = departureTime;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
 }

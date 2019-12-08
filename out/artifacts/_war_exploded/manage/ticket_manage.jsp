@@ -7,13 +7,24 @@
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="pojo.Chain" %>
-
-<html>
+<%@ page import="pojo.ChainCarriage" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
+<base href="<%=basePath%>">
 <head>
     <title>车票管理</title>
-    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../css/login.css" type="text/css">
-    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="<%=basePath%>/css/login.css" type="text/css">
+    <script type="text/javascript" src="<%=basePath%>/js/bootstrap.js"></script>
+    <style>
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle!important;
+        }
+    </style>
+
 </head>
 <body>
 <div class="container">
@@ -25,16 +36,16 @@
                     <th>终点站</th>
                     <th>离开时间</th>
                     <th>历时</th>
-                    <th>价格</th>
                     <th>一等座</th>
                     <th>二等座</th>
                     <th>软卧</th>
                     <th>硬卧</th>
                     <th>站票</th>
-                    <th>管理车票</th>
+                    <th colspan="3">管理车票</th>
                 </tr>
            <%
                ArrayList<Chain> chains = (ArrayList<Chain>) request.getAttribute("chainList");
+               int[] nums = (int[]) request.getAttribute("seatNums");
                if(chains !=null) {
                    for (Chain chain : chains) {
                        out.print("<tr>");
@@ -43,18 +54,19 @@
                        out.print(String.format("<td>%s</td>", chain.getEndStation()));
                        out.print(String.format("<td>%s</td>", chain.getDepartureTime()));
                        out.print(String.format("<td>%s</td>", chain.getTime()));
-                       out.print(String.format("<td>%s</td>", chain.getPrice()));
-                       //out.print(String.format("<td>%s</td>"));
-                       //out.print(String.format("<td>%s</td>"));
-                       //out.print(String.format("<td>%s</td>"));
-                       //out.print(String.format("<td>%s</td>"));
-                       //out.print(String.format("<td>%s</td>"));
-                       //out.print(String.format("<td>%s</td>"));
+                      for(int i = 0;i<5;i++)
+                       out.print(String.format("<td>%s</td>", nums[i]));
+                       out.print(String.format("<td><a href='%s/ChainServlet?method=deleteChain&chainId=%s' class=\"btn btn-default active\" role=\"button\">删除</a></td>",basePath,chain.getChainId()));
+                       out.print(String.format("<td><a href='%s/ChainServlet?method=updateChain&chainId=%s' class=\"btn btn-default active\" role=\"button\" >修改</a></td>",basePath,chain.getChainId()));
+                       out.print(String.format("<td><a href='%s/ChainServlet?method=priceMethod&chainId=%s' class=\"btn btn-default active\" role=\"button\" >价格操作</a></td>",basePath,chain.getChainId()));
                        out.print("</tr>");
                    }
+               }else {
+                   response.sendRedirect("../ChainServlet?method=showAllChain");
                }
            %>
-                <tr><td colspan="12" align="center"><button class="btn" onclick="location.href='addchain.jsp'">添加</button></td></tr>
+                <tr><td colspan="13" align="center"><button class="btn" onclick="location.href='manage/addchain.jsp'">添加</button>
+                    <button class="btn" onclick="location.href='manage/manager_main.jsp'">返回</button></td></tr>
             </table>
         </div>
 </div>

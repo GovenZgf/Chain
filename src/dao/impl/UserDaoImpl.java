@@ -4,10 +4,12 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import dao.UserDao;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import pojo.User;
 import utils.C3P0Utils;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserDaoImpl implements UserDao {
     private QueryRunner queryRunner = new QueryRunner(C3P0Utils.getDataSource());
@@ -25,9 +27,9 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void updateUser(User user) {
-        String sql = "update user_info set userId=?,userPassword=?,userPhoneNum=?,userIDcard=?,userName=?";
+    public void updateUser(String uid) {
     }
+
     public void saveUser(User user){
         String sql = "insert into user_info(userId,userPassword,userName,userPhoneNum) values (?,?,?,?)";
         Object[] params = new Object[]{user.getUserId(),user.getUserPassword(),user.getUserName(),user.getPhoneNumber()};
@@ -37,4 +39,27 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public ArrayList<User> selectALLUsers() {
+        String sql = "select * from user_info";
+        ArrayList<User> UserList = null;
+        try {
+                UserList = (ArrayList<User>) queryRunner.query(sql,new BeanListHandler(User.class));
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return UserList;
+    }
+
+    @Override
+    public void deleteUser(String uid) {
+        String sql = "delete from user_info where userId = ?";
+        try{
+            queryRunner.update(sql,uid);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 }

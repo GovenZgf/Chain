@@ -4,15 +4,42 @@ import pojo.chain_info.SeatType;
 
 public class ChainCarriage {
     private String carriageId;
-    private int numberOfSeat;
-    private SeatType seatType;
-    private Chain belongToChain;
+    private String carriageTypes;
+    private int seatNum;
+    private String chainId;
+    private double price;
+    public ChainCarriage(){}
 
-    public ChainCarriage(String carriageId, int numberOfSeat, SeatType seatType, Chain belongToChain) {
+    public ChainCarriage(String carriageId, String carriageTypes, int seatNum, String chainId, double price) {
         this.carriageId = carriageId;
-        this.numberOfSeat = numberOfSeat;
-        this.seatType = seatType;
-        this.belongToChain = belongToChain;
+        this.carriageTypes = carriageTypes;
+        this.seatNum = seatNum;
+        this.chainId = chainId;
+        this.price = price;
+    }
+
+    public String getCarriageTypes() {
+        return carriageTypes;
+    }
+
+    public void setCarriageTypes(String carriageTypes) {
+        this.carriageTypes = carriageTypes;
+    }
+
+    public int getSeatNum() {
+        return seatNum;
+    }
+
+    public void setSeatNum(int seatNum) {
+        this.seatNum = seatNum;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getCarriageId() {
@@ -23,27 +50,11 @@ public class ChainCarriage {
         this.carriageId = carriageId;
     }
 
-    public int getNumberOfSeat() {
-        return numberOfSeat;
+    public String getChainId() {
+        return chainId;
     }
 
-    public void setNumberOfSeat(int numberOfSeat) {
-        this.numberOfSeat = numberOfSeat;
-    }
-
-    public SeatType getSeatType() {
-        return seatType;
-    }
-
-    public void setSeatType(SeatType seatType) {
-        this.seatType = seatType;
-    }
-
-    public Chain getBelongToChain() {
-        return belongToChain;
-    }
-
-    public void setBelongToChain(Chain belongToChain) {
-        this.belongToChain = belongToChain;
+    public void setChainId(String chainId) {
+        this.chainId = chainId;
     }
 }
