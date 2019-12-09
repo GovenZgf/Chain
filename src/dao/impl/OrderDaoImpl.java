@@ -10,14 +10,17 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public void saveOrder(Order order) {
-        String sql = "insert into Order(orderId,userId,passengerName,passengerIDcard,orderDate,orderPrice,orderStatus)" +
-                "values(?,?,?,?,?,?,?)";
+        String sql = "insert into user_order(orderId,userId,passengerName,passengerIDcard,orderDateTime,orderStatus,mealsName,mealsPrice,accountPayable)" +
+                "values(?,?,?,?,?,?,?,?,?)";
         Object[] params = new Object[]
-                {order.getOrderId(), order.getUser().getUserId(), order.getPassenger().getPassengerName(), order.getPassenger().getPassengerIDcard(), order.getOrderDate(), order.getAccountPayable(), order.getOrderStatus()
+                {order.getOrderId(), order.getUserId(),
+                        order.getPassengerName(), order.getPassengerIDcard(),
+                        order.getOrderDatetime(), order.getOrderStatus(),order.getMealsName(),
+                        order.getMealsPrice(),order.getAccountPayable()
         };
 
         try{
-            queryRunner.update(sql);
+            queryRunner.update(sql,params);
         }catch (Exception e){
             e.printStackTrace();
         }

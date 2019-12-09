@@ -22,4 +22,12 @@
         <filter-name>NoLoginFilter</filter-name>
         <url-pattern>/manage/*</url-pattern>
     </filter-mapping>
+    <filter>
+        <filter-name>BookingFilter</filter-name>
+        <filter-class>filter.BookingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>BookingFilter</filter-name>
+        <url-pattern>/user/booking.jsp</url-pattern>
+    </filter-mapping>
 </web-app>

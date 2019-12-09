@@ -1,55 +1,32 @@
 package pojo.order;
 
 
-import pojo.Passenger;
-import pojo.User;
-
 import java.util.Date;
 
 public class Order {
     private String orderId;
-    private User user;
-    private Passenger passenger;
-    private Date orderDate;
-    private OrderStatus orderStatus;
-    private MealsOrder mealsOrder;
+    private String userId;
+    private String passengerIDcard;
+    private String passengerName;
+    private Date orderDatetime;
+    private String orderStatus;
+    private String mealsName;
+    private double mealsPrice;
     private Double accountPayable;//应付款项
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Order(String orderId, User user, Passenger passenger, Date orderDate, OrderStatus orderStatus, MealsOrder mealsOrder, Double accountPayable) {
+    public Order(String orderId, String userId, String passengerIDcard, String passengerName, Date orderDatetime, String orderStatus, String mealsName, double mealsPrice, Double accountPayable) {
         this.orderId = orderId;
-        this.user = user;
-        this.passenger = passenger;
-        this.orderDate = orderDate;
+        this.userId = userId;
+        this.passengerIDcard = passengerIDcard;
+        this.passengerName = passengerName;
+        this.orderDatetime = orderDatetime;
         this.orderStatus = orderStatus;
-        this.mealsOrder = mealsOrder;
+        this.mealsName = mealsName;
+        this.mealsPrice = mealsPrice;
         this.accountPayable = accountPayable;
     }
 
     public Order() {
-    }
-
-    public MealsOrder getMealsOrder() {
-        return mealsOrder;
-    }
-
-    public void setMealsOrder(MealsOrder mealsOrder) {
-        this.mealsOrder = mealsOrder;
-    }
-
-    public Double getAccountPayable() {
-        return accountPayable;
-    }
-
-    public void setAccountPayable(Double accountPayable) {
-        this.accountPayable = accountPayable;
     }
 
     public String getOrderId() {
@@ -60,27 +37,67 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Passenger getPassenger() {
-        return passenger;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setPassenger(Passenger passenger) {
-        this.passenger = passenger;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public Date getOrderDate() {
-        return orderDate;
+    public String getPassengerIDcard() {
+        return passengerIDcard;
     }
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
+    public void setPassengerIDcard(String passengerIDcard) {
+        this.passengerIDcard = passengerIDcard;
     }
 
-    public OrderStatus getOrderStatus() {
+    public String getPassengerName() {
+        return passengerName;
+    }
+
+    public void setPassengerName(String passengerName) {
+        this.passengerName = passengerName;
+    }
+
+    public Date getOrderDatetime() {
+        return orderDatetime;
+    }
+
+    public void setOrderDatetime(Date orderDatetime) {
+        this.orderDatetime = orderDatetime;
+    }
+
+    public String getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(OrderStatus orderStatus) {
+    public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public String getMealsName() {
+        return mealsName;
+    }
+
+    public void setMealsName(String mealsName) {
+        this.mealsName = mealsName;
+    }
+
+    public double getMealsPrice() {
+        return mealsPrice;
+    }
+
+    public void setMealsPrice(double mealsPrice) {
+        this.mealsPrice = mealsPrice;
+    }
+
+    public Double getAccountPayable() {
+        return accountPayable;
+    }
+
+    public void setAccountPayable(Double accountPayable) {
+        this.accountPayable = accountPayable;
     }
 }

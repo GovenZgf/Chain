@@ -27,8 +27,8 @@
     <div style="background: #3b80ff ;">
       <ul class="nav nav-pills" contenteditable="false">
         <li class="active"><a href="index.html">主页</a></li>
-        <li><a href="index.jsp">登录</a></li>
-        <li><a href="showTicket/ticket.jsp">车票</a></li>
+        <li><a href="index.html">登录</a></li>
+        <li><a href="ChainServlet?method=showAllChainForUser">车票</a></li>
       </ul>
     </div>
   </div>

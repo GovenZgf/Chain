@@ -68,30 +68,7 @@ public class ChainServlet extends BaseServlet {
     }
 
     public String showAllChain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<Chain> chains = chainService.selectAllChain();
-       // ArrayList<ChainCarriage> chainCarriages = carriageService.selectAllChainCarriage(chains);
-
-        HashMap<String,HashMap<String,Integer>> map = new HashMap<>();
-        for(Chain chain:chains){
-            HashMap<String,Integer> seatMap = new HashMap<>();
-            seatMap.put("一等座",carriageService.getSeatNum("一等座",chain.getChainId()));
-            seatMap.put("二等座",carriageService.getSeatNum("二等座",chain.getChainId()));
-            seatMap.put("硬卧",carriageService.getSeatNum("硬卧",chain.getChainId()));
-            seatMap.put("软卧",carriageService.getSeatNum("软卧",chain.getChainId()));
-            seatMap.put("站票",carriageService.getSeatNum("站票",chain.getChainId()));
-
-            map.put(chain.getChainId(),seatMap);
-        }
-
-        /* int nums[] = new int[chains.size() * 5];
-        for (int i = 0; i < chains.size(); i++) {
-            for (int n = 0; n < 5; n++) {
-                nums[n] = carriageService.getSeatNum(chainCarriages.get(n * 2).getCarriageTypes(), chains.get(i).getChainId());
-            }
-        }*/
-        //request.setAttribute("seatNums", nums);
-        request.getSession().setAttribute("seatNums",map);
-        request.setAttribute("chainList", chains);
+        showTicket(request);
         request.getRequestDispatcher("manage/ticket_manage.jsp").forward(request, response);
         return null;
     }
@@ -153,5 +130,34 @@ public class ChainServlet extends BaseServlet {
         carriageService.updatePrice(priceMap, chainId);
         response.sendRedirect("manage/ticket_manage.jsp");
         return null;
+    }
+
+    public String showAllChainForUser(HttpServletRequest request, HttpServletResponse response) throws  ServletException,IOException{
+        showTicket(request);
+        request.getRequestDispatcher("user/ticket.jsp").forward(request, response);
+        return null;
+    }
+
+    public String showForBooking(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+        String chainId = request.getParameter("chainId");
+        Chain chain = chainService.selectChainById(chainId);
+        request.setAttribute("chain",chain);
+        request.getRequestDispatcher("user/booking.jsp").forward(request,response);
+        return null;
+    }
+    private void showTicket(HttpServletRequest request) {
+        ArrayList<Chain> chains = chainService.selectAllChain();
+        HashMap<String, HashMap<String,Integer>> map = new HashMap<>();
+        for(Chain chain:chains){
+            HashMap<String,Integer> seatMap = new HashMap<>();
+            seatMap.put("一等座",carriageService.getSeatNum("一等座",chain.getChainId()));
+            seatMap.put("二等座",carriageService.getSeatNum("二等座",chain.getChainId()));
+            seatMap.put("硬卧",carriageService.getSeatNum("硬卧",chain.getChainId()));
+            seatMap.put("软卧",carriageService.getSeatNum("软卧",chain.getChainId()));
+            seatMap.put("站票",carriageService.getSeatNum("站票",chain.getChainId()));
+            map.put(chain.getChainId(),seatMap);
+        }
+        request.getSession().setAttribute("seatNums",map);
+        request.setAttribute("chainList", chains);
     }
 }

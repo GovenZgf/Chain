@@ -26,7 +26,7 @@ public class UserServlet extends BaseServlet {
         User user = userService.findUserByUsernameAndPassword(sid,sPassword);
         if(user!=null){
             request.getSession().setAttribute("user",user);
-            response.sendRedirect("showTicket/ticket.jsp");
+            response.sendRedirect("user/ticket.jsp");
         }else {
             request.setAttribute("error","登陆失败");
             request.getRequestDispatcher("index.jsp").forward(request,response);
