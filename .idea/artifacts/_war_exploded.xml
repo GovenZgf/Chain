@@ -12,6 +12,7 @@
           <element id="file-copy" path="E:/c3p0/c3p0-0.9.5.4.jar" />
           <element id="file-copy" path="D:/commons-dbutils-1.7/commons-dbutils-1.7.jar" />
           <element id="file-copy" path="D:/chrome/下载内容/mysql-connector-java-8.0.17.jar" />
+          <element id="library" level="project" name="servlet-api" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="Chain/web/Web" />

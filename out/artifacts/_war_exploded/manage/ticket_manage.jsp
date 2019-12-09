@@ -45,20 +45,25 @@
                 </tr>
            <%
                ArrayList<Chain> chains = (ArrayList<Chain>) request.getAttribute("chainList");
-               int[] nums = (int[]) request.getAttribute("seatNums");
+               HashMap<String,HashMap<String,Integer>> map = (HashMap<String, HashMap<String, Integer>>) session.getAttribute("seatNums");
                if(chains !=null) {
                    for (Chain chain : chains) {
+                       HashMap<String,Integer> seatNum = map.get(chain.getChainId());
                        out.print("<tr>");
                        out.print(String.format("<td>%s</td>", chain.getChainId()));
                        out.print(String.format("<td>%s</td>", chain.getStartStation()));
                        out.print(String.format("<td>%s</td>", chain.getEndStation()));
                        out.print(String.format("<td>%s</td>", chain.getDepartureTime()));
                        out.print(String.format("<td>%s</td>", chain.getTime()));
-                      for(int i = 0;i<5;i++)
-                       out.print(String.format("<td>%s</td>", nums[i]));
+                       out.print(String.format("<td>%s</td>", seatNum.get("一等座")));
+                       out.print(String.format("<td>%s</td>", seatNum.get("二等座")));
+                       out.print(String.format("<td>%s</td>", seatNum.get("软卧")));
+                       out.print(String.format("<td>%s</td>", seatNum.get("硬卧")));
+                       out.print(String.format("<td>%s</td>", seatNum.get("站票")));
                        out.print(String.format("<td><a href='%s/ChainServlet?method=deleteChain&chainId=%s' class=\"btn btn-default active\" role=\"button\">删除</a></td>",basePath,chain.getChainId()));
                        out.print(String.format("<td><a href='%s/ChainServlet?method=updateChain&chainId=%s' class=\"btn btn-default active\" role=\"button\" >修改</a></td>",basePath,chain.getChainId()));
                        out.print(String.format("<td><a href='%s/ChainServlet?method=priceMethod&chainId=%s' class=\"btn btn-default active\" role=\"button\" >价格操作</a></td>",basePath,chain.getChainId()));
+
                        out.print("</tr>");
                    }
                }else {

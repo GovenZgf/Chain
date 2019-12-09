@@ -78,11 +78,11 @@ public class ChainDaoImpl implements ChainDao {
 
     @Override
     public double getPrice(String seatType,String chainId) {
-        String sql = "select price from carriage_info where carriageTypes=? and chainId =?";
+        String sql = "select distinct price from carriage_info where carriageTypes=? and chainId =?";
         Object[] params = new Object[]{seatType,chainId};
         double price = 0;
         try{
-           price =  Double.parseDouble(queryRunner.query(sql,new ScalarHandler<>(),params).toString());
+            price = Double.parseDouble(queryRunner.query(sql, new ScalarHandler<>(),params).toString());
         }catch (SQLException e){
             e.printStackTrace();
         }

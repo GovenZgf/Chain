@@ -4,12 +4,13 @@ import pojo.Chain;
 import pojo.ChainCarriage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface ChainCarriageService {
-    void addChainCarriages(int num,ChainCarriage[] chainCarriages);
+    void addChainCarriages(int num,HashMap<String,ChainCarriage> map);
     ArrayList<ChainCarriage> selectAllCarriage(String id);
     ArrayList<ChainCarriage> selectAllChainCarriage(ArrayList<Chain> chains);
     int getSeatNum(String type,String cid);
     void deleteCarriage(String cid);
-    void updatePrice(double one, double two, double soft, double hard, double left);
+    void updatePrice(HashMap<String,Double> hp,String id);
 }

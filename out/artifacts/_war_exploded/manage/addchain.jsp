@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>增加列车选项</title>
     <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../css/login.css" type="text/css">
@@ -53,16 +54,25 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" >价格</label>
+                    <label class="control-label col-sm-2" >一等座价格</label>
                     <div class="col-sm-5">
                         <input type="number" class="form-control"   name="onePrice"placeholder="一等座价格">
                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" >二等座价格</label>
                     <div class="col-sm-5">
                         <input type="number" class="form-control"    name="twoPrice"placeholder="二等座价格">
                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" >硬卧价格</label>
                     <div class="col-sm-5">
                         <input type="number" class="form-control"   name="hardPrice"placeholder="硬卧价格">
                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" >软卧价格</label>
                     <div class="col-sm-5">
                         <input type="number" class="form-control"    name="softPrice"placeholder="软卧价格">
                     </div>

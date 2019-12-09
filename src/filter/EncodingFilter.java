@@ -18,7 +18,6 @@ public class EncodingFilter implements Filter {
         request.setCharacterEncoding("utf-8");
         chain.doFilter(req, resp);
         response.setCharacterEncoding("utf-8");
-        response.setContentType("utf-8");
     }
     public void init(FilterConfig config) throws ServletException {
     }

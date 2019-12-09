@@ -6,18 +6,23 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
+<base href="<%=basePath%>">
 <html>
 <head>
     <title>管理员登录</title>
-    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="css/login.css" type="text/css">
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="<%=basePath%>/css/login.css" type="text/css">
+    <script type="text/javascript" src="<%=basePath%>/js/bootstrap.js"></script>
 </head>
 <body>
 <div class="container-fluid">
     <div class="page-header">管理员登录</div>
     <div class="row">
-        <form method="post" action="ManagerServlet?method=managerLogin">
+        <form method="post" action="<%=basePath%>/ManagerServlet?method=managerLogin">
             <div class="form-group">
                 <label for="管理员用户名">账号</label>
                 <input type="text" class="form-control" id="管理员用户名" name="mid">

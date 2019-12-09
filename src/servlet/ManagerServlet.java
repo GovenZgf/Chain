@@ -20,7 +20,7 @@ public class ManagerServlet extends BaseServlet {
         Manager manager = managerService.findManagerByIdAndPassword(id,password);
         if(manager != null){
             request.getSession().setAttribute("manager",manager);
-            response.sendRedirect("manager_main.jsp");
+            response.sendRedirect("manage/manager_main.jsp");
         }else {
              request.setAttribute("error","登陆失败");
              request.getRequestDispatcher("admin.jsp").forward(request,response);

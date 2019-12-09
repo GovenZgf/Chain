@@ -6,9 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ page import="pojo.Manager" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>管理员主页</title>
     <style type="text/css">
         .m1 {
@@ -51,6 +52,10 @@
                     </td>
                 </tr>
             </table>
+            <%
+                Manager manager = (Manager) session.getAttribute("manager");
+                out.print(String.format("管理员Id：<input readonly='readonly' type=text value=%s>",manager.getManagerId()));
+            %>
         </div>
     </div>
 </div>

@@ -7,12 +7,13 @@ import pojo.ChainCarriage;
 import service.ChainCarriageService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ChainCarriageServiceImpl implements ChainCarriageService {
     CarriageDao carriageDao = new CarriageDaoImpl();
     @Override
-    public void addChainCarriages(int num , ChainCarriage[] chainCarriages) {
-        carriageDao.addManyCarriages(num,chainCarriages);
+    public void addChainCarriages(int num , HashMap<String,ChainCarriage> map) {
+        carriageDao.addManyCarriages(num,map);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class ChainCarriageServiceImpl implements ChainCarriageService {
     }
 
     @Override
-    public void updatePrice(double one, double two, double soft, double hard, double left) {
-        carriageDao.updatePrice(one, two, soft, hard, left);
+    public void updatePrice(HashMap<String,Double> hp,String chainId) {
+        carriageDao.updatePrice(hp,chainId);
     }
 }
