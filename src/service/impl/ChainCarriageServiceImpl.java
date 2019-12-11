@@ -40,4 +40,14 @@ public class ChainCarriageServiceImpl implements ChainCarriageService {
     public void updatePrice(HashMap<String,Double> hp,String chainId) {
         carriageDao.updatePrice(hp,chainId);
     }
+
+    @Override
+    public double getSeatPrice(String cid, String type) {
+        return carriageDao.getSeatPrice(cid,type);
+    }
+
+    @Override
+    public void updateSeatNum(String cid, String type) {
+        carriageDao.updateSeatNum(cid,type);
+    }
 }

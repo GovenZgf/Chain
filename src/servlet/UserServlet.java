@@ -26,10 +26,10 @@ public class UserServlet extends BaseServlet {
         User user = userService.findUserByUsernameAndPassword(sid,sPassword);
         if(user!=null){
             request.getSession().setAttribute("user",user);
-            response.sendRedirect("user/ticket.jsp");
+            response.sendRedirect("index.jsp");
         }else {
             request.setAttribute("error","登陆失败");
-            request.getRequestDispatcher("index.jsp").forward(request,response);
+            request.getRequestDispatcher("index.html").forward(request,response);
         }
         return null;
     }
@@ -97,6 +97,20 @@ public class UserServlet extends BaseServlet {
         else{
             response.sendRedirect("manage/user_manage.jsp");;
         }
+        return null;
+    }
+    public String modifyUserInfo(HttpServletRequest request,HttpServletResponse response)throws ServletException,IOException{
+        String userName = request.getParameter("userName");
+        String userPhoneNumber = request.getParameter("userPhoneNumber");
+        String userIDcard = request.getParameter("userIDcard");
+        User user= (User) request.getSession().getAttribute("user");
+        String userId = user.getUserId();
+        userService.modifyUserInfo(userId,userName,userPhoneNumber,userIDcard);
+        user.setPhoneNumber(userPhoneNumber);
+        user.setUserName(userName);
+        user.setUserIDCard(userIDcard);
+        request.getSession().setAttribute("user",user);
+        response.sendRedirect("user/userinfo.jsp");
         return null;
     }
 }

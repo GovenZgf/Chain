@@ -5,22 +5,15 @@ import pojo.chain_info.SeatType;
 
 public class Ticket {
     private String ticketId;
-    private Chain chain;
-    private Passenger ticketPassenger;
+    private String chainId;
+    private String orderId;
     private Double ticketPrice;
-    private SeatType seatType;
-    private SeatOrder seatOrder;
 
-    public Ticket() {
-    }
-
-    public Ticket(String ticketId, Chain chain, Passenger ticketPassenger, Double ticketPrice, SeatType seatType, SeatOrder seatOrder) {
+    public Ticket(String ticketId, String chainId, String orderId, Double ticketPrice) {
         this.ticketId = ticketId;
-        this.chain = chain;
-        this.ticketPassenger = ticketPassenger;
+        this.chainId = chainId;
+        this.orderId = orderId;
         this.ticketPrice = ticketPrice;
-        this.seatType = seatType;
-        this.seatOrder = seatOrder;
     }
 
     public String getTicketId() {
@@ -31,20 +24,20 @@ public class Ticket {
         this.ticketId = ticketId;
     }
 
-    public Chain getChain() {
-        return chain;
+    public String getChainId() {
+        return chainId;
     }
 
-    public void setChain(Chain chain) {
-        this.chain = chain;
+    public void setChainId(String chainId) {
+        this.chainId = chainId;
     }
 
-    public Passenger getTicketPassenger() {
-        return ticketPassenger;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setTicketPassenger(Passenger ticketPassenger) {
-        this.ticketPassenger = ticketPassenger;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public Double getTicketPrice() {
@@ -55,19 +48,7 @@ public class Ticket {
         this.ticketPrice = ticketPrice;
     }
 
-    public SeatType getSeatType() {
-        return seatType;
+    public Ticket() {
     }
 
-    public void setSeatType(SeatType seatType) {
-        this.seatType = seatType;
-    }
-
-    public SeatOrder getSeatOrder() {
-        return seatOrder;
-    }
-
-    public void setSeatOrder(SeatOrder seatOrder) {
-        this.seatOrder = seatOrder;
-    }
 }

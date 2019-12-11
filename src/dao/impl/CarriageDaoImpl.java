@@ -13,7 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CarriageDaoImpl implements CarriageDao {
+public class CarriageDaoImpl implements CarriageDao
+{
     private QueryRunner queryRunner = new QueryRunner(C3P0Utils.getDataSource());
 
     @Override
@@ -168,6 +169,30 @@ public class CarriageDaoImpl implements CarriageDao {
         params[4] = new Object[]{priceMap.get("站票"),chainId,"站票"};
         try{
         queryRunner.batch(sql,params);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public double getSeatPrice(String cid, String seatType) {
+       String sql="select distinct price from carriage_info where chainId = ? and carriageTypes = ?";
+       double price = 0;
+       Object[] params = new Object[]{cid,seatType};
+       try{
+           price = queryRunner.query(sql,new ScalarHandler<>(),params);
+       }catch (SQLException e){
+           e.printStackTrace();
+       }
+       return price;
+    }
+
+    @Override
+    public void updateSeatNum(String cid, String seatType) {
+        String sql = "update carriage_info set seatNum = seatNum-1  where chainId = ? AND carriageTypes=? and seatNum>0 ORDER BY carriageId LIMIT 1";
+        Object[] params = new Object[]{cid,seatType};
+        try{
+            queryRunner.update(sql,params);
         }catch (SQLException e){
             e.printStackTrace();
         }

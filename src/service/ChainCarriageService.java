@@ -13,4 +13,6 @@ public interface ChainCarriageService {
     int getSeatNum(String type,String cid);
     void deleteCarriage(String cid);
     void updatePrice(HashMap<String,Double> hp,String id);
+    double getSeatPrice(String cid,String type);
+    void updateSeatNum(String cid,String type);
 }

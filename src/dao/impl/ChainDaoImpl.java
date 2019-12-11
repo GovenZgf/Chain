@@ -88,4 +88,30 @@ public class ChainDaoImpl implements ChainDao {
         }
         return price;
     }
+
+    @Override
+    public ArrayList<Chain> selectChainsByStation(String start, String end) {
+        String sql = "select * from chain_info where startStation = ? and endStation = ? and departureTime > now()";
+        Object[] params = new Object[]{start,end};
+        ArrayList<Chain> chains = null;
+        try{
+            chains = (ArrayList<Chain>) queryRunner.query(sql,new BeanListHandler<>(Chain.class),params);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return chains;
+    }
+
+    @Override
+    public ArrayList<Chain> selectChainsBySaT(String start,String end,String departureDate) {
+        String sql = "select * from chain_info where startStation = ? and endStation = ? and departureTime > ?";
+        Object[] params = new Object[]{start,end,departureDate};
+        ArrayList<Chain> chains = null;
+        try{
+            chains = (ArrayList<Chain>) queryRunner.query(sql,new BeanListHandler<>(Chain.class),params);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return chains;
+    }
 }

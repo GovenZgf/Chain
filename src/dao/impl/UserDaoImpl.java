@@ -62,4 +62,15 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
+    @Override
+    public void modifyUser(String uid, String cun, String cup, String cUid) {
+        String sql = "update user_info set userName = ?,PhoneNumber =?,userIDcard =? where userId = ?";
+        Object[] params = new Object[]{cun,cup,cUid,uid};
+        try{
+            queryRunner.update(sql,params);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 }

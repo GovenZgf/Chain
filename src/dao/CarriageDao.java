@@ -14,4 +14,6 @@ public interface CarriageDao {
     void deleteCarriage(String cid);
     int getSeatNum(String type,String cid);
     void updatePrice(HashMap<String,Double> priceMap, String chainId);
+    double getSeatPrice(String cid,String seatType);
+    void updateSeatNum(String cid,String seatType);
 }

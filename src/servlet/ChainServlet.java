@@ -2,6 +2,7 @@ package servlet;
 
 import pojo.Chain;
 import pojo.ChainCarriage;
+import pojo.User;
 import pojo.chain_info.SeatType;
 import service.ChainCarriageService;
 import service.ChainService;
@@ -139,12 +140,41 @@ public class ChainServlet extends BaseServlet {
     }
 
     public String showForBooking(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+        User user = (User) request.getSession().getAttribute("user");
+        if(user==null) response.sendRedirect("index.html");
         String chainId = request.getParameter("chainId");
         Chain chain = chainService.selectChainById(chainId);
         request.setAttribute("chain",chain);
         request.getRequestDispatcher("user/booking.jsp").forward(request,response);
         return null;
     }
+
+    public String selectChainByStationAndTime(HttpServletRequest request,HttpServletResponse res)throws ServletException,IOException{
+        String startStation = request.getParameter("startStation");
+        String endStation = request.getParameter("endStation");
+        String departureDate = request.getParameter("departureDate");
+        ArrayList<Chain> chains ;
+        HashMap<String, HashMap<String,Integer>> map = new HashMap<>();
+        if(departureDate==null){
+            chains = chainService.selectChainByStation(startStation,endStation);
+        }else {
+            chains =chainService.selectChainBySaT(startStation,endStation,departureDate);
+        }
+        for(Chain chain:chains){
+            HashMap<String,Integer> seatMap = new HashMap<>();
+            seatMap.put("一等座",carriageService.getSeatNum("一等座",chain.getChainId()));
+            seatMap.put("二等座",carriageService.getSeatNum("二等座",chain.getChainId()));
+            seatMap.put("硬卧",carriageService.getSeatNum("硬卧",chain.getChainId()));
+            seatMap.put("软卧",carriageService.getSeatNum("软卧",chain.getChainId()));
+            seatMap.put("站票",carriageService.getSeatNum("站票",chain.getChainId()));
+            map.put(chain.getChainId(),seatMap);
+        }
+        request.getSession().setAttribute("seatNums",map);
+        request.setAttribute("chains",chains);
+        request.getRequestDispatcher("indexselect/selectResult.jsp").forward(request,res);
+        return null;
+    }
+
     private void showTicket(HttpServletRequest request) {
         ArrayList<Chain> chains = chainService.selectAllChain();
         HashMap<String, HashMap<String,Integer>> map = new HashMap<>();

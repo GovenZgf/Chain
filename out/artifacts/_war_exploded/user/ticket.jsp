@@ -1,6 +1,7 @@
 <%@ page import="pojo.Chain" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.HashMap" %><%--
+<%@ page import="java.util.HashMap" %>
+<%@ page import="pojo.utils.TimeUtil" %><%--
   Created by IntelliJ IDEA.
   User: sj150
   Date: 2019/12/2
@@ -8,6 +9,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -84,6 +86,7 @@
                             out.print(String.format("<td>%s</td>", seatNum.get("软卧")));
                             out.print(String.format("<td>%s</td>", seatNum.get("硬卧")));
                             out.print(String.format("<td>%s</td>", seatNum.get("站票")));
+                            if(!TimeUtil.isTimeOut(chain.getDepartureTime()))
                             out.print(String.format("<td><a href='%s/ChainServlet?method=showForBooking&chainId=%s' class=\"btn btn-default active\" role=\"button\">预订</a></td>",basePath,chain.getChainId()));
                             out.print("</tr>");
                         }

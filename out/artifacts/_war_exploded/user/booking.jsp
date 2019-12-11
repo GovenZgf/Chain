@@ -10,7 +10,6 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../css/login.css" type="text/css">
     <script type="text/javascript" src="../js/bootstrap.js"></script>
 
 </head>
@@ -19,10 +18,11 @@
     <div class="row">
         <div style="margin-top: 165px">
 <form action="OrderServlet?method=booking" method="post">
-    <h1>请填入乘客信息</h1>
+    <h1>确认支付信息</h1>
     <div class="form-group">
         <%
             Chain chain = (Chain)request.getAttribute("chain");
+            if(chain ==null) response.sendRedirect("user/ticket.jsp");
             out.print("<label for=\"chainId\">车次</label>");
             out.print(String.format("<input type=\"text\" id=\"chainId\" name=\"chainId\" readonly=\"readonly\" class=\"form-control\" value=%s>",chain.getChainId()));
             out.print("<label for=\"startStation\" x>起点</label>");
@@ -39,6 +39,12 @@
             <option value="无座">无座/站票</option>
         </select>
 
+        <label for="passengerType">乘客类型</label>
+        <select class="form-control" id="passengerType" name="passengerType">
+            <option value="普通乘客">普通乘客</option>
+            <option value="学生">学生</option>
+        </select>
+
         <label for="passengerName">乘客姓名</label>
         <input type="text" id="passengerName" name="passengerName" class="form-control">
 
@@ -47,7 +53,7 @@
 
         <label for="mealsOrder">订餐选择</label>
         <select class="form-control" id="mealsOrder" name="mealsOrder">
-            <option>无</option>
+            <option value="无">无</option>
             <option value="套餐一">套餐一：黄焖鸡米饭</option>
             <option value="套餐二">套餐二：双味鸡排饭</option>
             <option value="套餐三">套餐三：红烧牛肉面</option>

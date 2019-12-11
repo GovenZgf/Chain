@@ -37,4 +37,14 @@ public class ChainServiceImpl implements ChainService {
         return chainDao.getPrice(seatType,chainId);
     }
 
+    @Override
+    public ArrayList<Chain> selectChainByStation(String start, String end) {
+        return chainDao.selectChainsByStation(start,end);
+    }
+
+    @Override
+    public ArrayList<Chain> selectChainBySaT(String start, String end, String date) {
+        return chainDao.selectChainsBySaT(start,end,date);
+    }
+
 }

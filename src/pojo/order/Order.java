@@ -12,9 +12,10 @@ public class Order {
     private String orderStatus;
     private String mealsName;
     private double mealsPrice;
+    private double ticketPrice;
     private Double accountPayable;//应付款项
 
-    public Order(String orderId, String userId, String passengerIDcard, String passengerName, Date orderDatetime, String orderStatus, String mealsName, double mealsPrice, Double accountPayable) {
+    public Order(String orderId, String userId, String passengerIDcard, String passengerName, Date orderDatetime, String orderStatus, String mealsName, double mealsPrice, double ticketPrice, Double accountPayable) {
         this.orderId = orderId;
         this.userId = userId;
         this.passengerIDcard = passengerIDcard;
@@ -23,7 +24,16 @@ public class Order {
         this.orderStatus = orderStatus;
         this.mealsName = mealsName;
         this.mealsPrice = mealsPrice;
+        this.ticketPrice = ticketPrice;
         this.accountPayable = accountPayable;
+    }
+
+    public double getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(double ticketPrice) {
+        this.ticketPrice = ticketPrice;
     }
 
     public Order() {

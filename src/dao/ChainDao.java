@@ -15,4 +15,6 @@ public interface ChainDao {
     void updateChain(String id, Timestamp ctime);
     Chain selectChainById(String id);
     double getPrice(String seatType,String chainId);
+    ArrayList<Chain> selectChainsByStation(String start,String end);
+    ArrayList<Chain> selectChainsBySaT(String start,String end,String departureDate);
 }

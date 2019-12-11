@@ -11,4 +11,5 @@ public interface UserDao {
     void saveUser(User user);
     ArrayList<User> selectALLUsers();
     void deleteUser(String uid);
+    void modifyUser(String uid,String cun,String cui,String cUid);
 }

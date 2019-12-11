@@ -9,4 +9,5 @@ public interface UserService {
     void saveUser(User user);
     ArrayList<User> selectAllUsers();
     void deleteUser(String uid);
+    void modifyUserInfo(String id,String cun,String cup,String cuid);
 }

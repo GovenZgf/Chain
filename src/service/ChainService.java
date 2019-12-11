@@ -14,4 +14,6 @@ public interface ChainService {
     Chain selectChainById(String id);
     void updateChain(String id,Timestamp ctime);
     double getPrice(String seatType,String chainId);
+    ArrayList<Chain> selectChainByStation(String start,String end);
+    ArrayList<Chain> selectChainBySaT(String start,String end,String date);
 }
